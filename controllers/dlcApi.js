@@ -28,7 +28,7 @@ async function getDlc(req, res) {
             `
                 SELECT dlc.dlcId, dlc.dlcName, dlc.description, dlc.releaseDate, dlc.price, getDlcTruePrice(dlc.dlcId) AS priceWithDiscount, g.gameName, d.devName, d.country
                 FROM dlc, developer d, game g
-                WHERE dlc.devId = d.devId AND dlc.dlcId = ${req.params.id} AND g.gameId = dlc.gameId
+                WHERE dlc.devId = d.devId AND dlc.dlcId = '${req.params.id}' AND g.gameId = dlc.gameId
             `
         );
         res.send(result);
