@@ -14,6 +14,8 @@ app.use(express.json());
 app.use(cors({ origin: true }));
 
 
+app.use('/api/game', routes.game);
+
 // start up the server
 const port = process.env.PORT || 3281;
 app.listen(port, () => {
