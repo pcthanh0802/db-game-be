@@ -11,7 +11,7 @@ async function getDlcsOfGame(req, res) {
             `
                 SELECT dlcId, dlcName, price, getDlcTruePrice(dlcId) AS priceWithDiscount 
                 FROM dlc
-                WHERE gameId = ${gameId}
+                WHERE gameId = '${gameId}'
                 LIMIT 10 OFFSET ${10 * page}
             `
         );
