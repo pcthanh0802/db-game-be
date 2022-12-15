@@ -39,6 +39,24 @@ async function getGames(req, res) {
     }
 }
 
+async function getAllGames(req, res) {
+    try {
+        const page = req.query.page || 0;
+        const result = await query(
+            conn,   
+            `
+                SELECT gameId, gameName, price, getGameTruePrice(gameId) AS priceWithDiscount 
+                FROM game
+                LIMIT 10 OFFSET ${10 * page};
+            `
+        );
+        res.send(result);
+    } catch(err) {
+        res.status(500).send(err.message);
+    }
+}
+
 module.exports = {
-    getGames
+    getGames,
+    getAllGames
 }

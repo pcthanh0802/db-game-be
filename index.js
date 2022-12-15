@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const routes = require('./routes');
+const api = require('./api');
 
 // middlewares
 app.use(morgan('combined'));
@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(cors({ origin: true }));
 
 
-app.use('/api/game', routes.game);
+app.use('/api/game', api.game);
+app.use('/api/dlc', api.dlc);
 
 // start up the server
 const port = process.env.PORT || 3281;
